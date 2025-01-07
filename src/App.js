@@ -1,6 +1,6 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Header,Footer,About,CollapsibleNavbar,Gallery } from './components';
+import { Header,Footer,About,CollapsibleNavbar,Gallery, Home } from './components';
 
 
 function App() {
@@ -8,6 +8,7 @@ function App() {
     <div className="App">
       <Header/>
       <CollapsibleNavbar />
+      <Home />
       <Gallery/>
       <About />
       <Footer />
