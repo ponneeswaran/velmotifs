@@ -90,8 +90,8 @@ const MenuBarCenter = (props) => {
     >
       <Container>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="w-100 d-flex justify-content-between">
+        <Navbar.Collapse id="basic-navbar-nav" className='justify-content-center'>
+          <Nav className="w-50 d-flex justify-content-between">
             {menuSections.map((menuItem)=>{
               return <MenuList key={menuItem.id} label={menuItem.title} page={menuItem.page} offset={-110} val={menuItem.val}/>
             })}
@@ -103,7 +103,6 @@ const MenuBarCenter = (props) => {
 };
 
 const MenuList = (props) => {
-  console.log(props);
   return (    
     <Nav.Link as={Link}
         to={props.page}
@@ -120,7 +119,6 @@ const MenuList = (props) => {
 };
 
 const menuClick = (event) => {
-  console.log(event.target.id);
   activeSelection = event.target.id;
 };
 export default CollapsibleNavbar;
