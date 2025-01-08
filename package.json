@@ -1,6 +1,6 @@
 {
   "name": "Vel-aari-works",
-  "version": "0.5.1",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "bootstrap": "^5.3.3",
