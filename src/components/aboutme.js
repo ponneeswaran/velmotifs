@@ -1,10 +1,10 @@
 import { Col, Container, Row } from "react-bootstrap";
 
 const About = () => (
-        <header id="about" className="section">
+        <div id="about" className="section">
             <h1>About Me</h1>
             <Container>
-              <Row className="align-items-center" style={{ minHeight: "100vh" }}>
+              <Row className="align-items-center" style={{ minHeight: "60vh" }}>
                 <Col md={6}>
                   <img
                     src={"pics/DSC_0874.JPG"}
@@ -30,7 +30,7 @@ const About = () => (
                 </Col>
               </Row>
             </Container>
-        </header>
+        </div>
     );
 
 export default About;

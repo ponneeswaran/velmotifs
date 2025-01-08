@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Navbar, Nav, Container, Row, Col } from 'react-bootstrap';
 import {Link} from 'react-scroll';
 
 let activeSelection = null;
@@ -90,11 +90,13 @@ const MenuBarCenter = (props) => {
     >
       <Container>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav" className='justify-content-center'>
-          <Nav className="w-50 d-flex justify-content-between">
-            {menuSections.map((menuItem)=>{
-              return <MenuList key={menuItem.id} label={menuItem.title} page={menuItem.page} offset={-110} val={menuItem.val}/>
-            })}
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="mx-auto">
+              <Row>
+                {menuSections.map((menuItem)=>{
+                  return <MenuList key={menuItem.id} label={menuItem.title} page={menuItem.page} offset={-110} val={menuItem.val}/>
+                })}
+              </Row>
           </Nav>
         </Navbar.Collapse>
       </Container>
@@ -104,17 +106,19 @@ const MenuBarCenter = (props) => {
 
 const MenuList = (props) => {
   return (    
-    <Nav.Link as={Link}
-        to={props.page}
-        smooth={true}
-        duration={300}
-        offset={props.offset} // Adjust the offset for the navbar height
-        activeClass="active"
-        onClick={menuClick}
-        id={props.val}
-      >
-        {props.label}
-    </Nav.Link>
+    <Col lg={4}>
+      <Nav.Link as={Link}
+          to={props.page}
+          smooth={true}
+          duration={300}
+          offset={props.offset} // Adjust the offset for the navbar height
+          activeClass="active"
+          onClick={menuClick}
+          id={props.val}
+        >
+          {props.label}
+      </Nav.Link>
+    </Col>
   );
 };
 
