@@ -4,7 +4,7 @@ import { Header,Footer,About,CollapsibleNavbar,Gallery, Home } from './component
 import { useEffect } from 'react';
 
 
-function App() {
+const App = () => {
   useEffect(()=>{
     const element = document.getElementById("1");
     element.classList.add('active');
