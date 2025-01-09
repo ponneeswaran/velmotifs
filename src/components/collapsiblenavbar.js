@@ -65,7 +65,7 @@ const MenuBarScroll = (props) => {
       style={{ position: props.isSticky ? 'fixed' : 'sticky', top: 0, width: '100%' }}
     >
       <Container>
-        <Navbar.Brand href="#home">Aari Work Collection</Navbar.Brand>
+        <Navbar.Brand href="#home">Vel Motifs</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
