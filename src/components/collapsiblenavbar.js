@@ -12,6 +12,7 @@ const menuSections = [
 
 const CollapsibleNavbar = () => { 
   const [isSticky, setIsSticky] = useState(false);
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 768);
   
   const handleScroll = () => {
     const sections = document.querySelectorAll(".section");
@@ -44,11 +45,12 @@ const CollapsibleNavbar = () => {
   };
 
   useEffect(() => {
+    setIsLargeScreen(window.innerWidth >= 768);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  if(isSticky){
+  if(isSticky || !isLargeScreen){
     return (<MenuBarScroll isSticky = {isSticky}/>);
   }else{
     return (<MenuBarCenter isSticky = {isSticky}/>);

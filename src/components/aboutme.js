@@ -3,12 +3,12 @@ import { Col, Container, Row } from "react-bootstrap";
 
 const About = () => {
   const [color, setColor] = useState('black');
-  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 992);
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 768);
 
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      setIsLargeScreen(window.innerWidth >= 992);
+      setIsLargeScreen(window.innerWidth >= 768);
 
       if (width <= 480) {
         setColor('yellow');
