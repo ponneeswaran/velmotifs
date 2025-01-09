@@ -22,7 +22,11 @@ const Gallery = ()=> {
   const importAllImages = () => {
     // Replace with the relative path of your folder
     const imagesContext = require.context('../../public/galleryImages', false, /\.(png|jpe?g|svg)$/);
-    return imagesContext.keys().map(imagesContext);
+    // Get all image paths and sort by file name (assuming the file names are sortable alphabetically)
+    const imagePaths = imagesContext.keys().sort();
+
+    // Map the sorted image paths to the actual images
+    return imagePaths.map(image => imagesContext(image));
   };
 
   const images = importAllImages();
@@ -50,7 +54,7 @@ const Gallery = ()=> {
         }}
       >
         {images.map((src, index) => (
-        <SwiperSlide>
+        <SwiperSlide key={index+'-'+index}>
             <img
               key={index}
               src={src}
@@ -65,7 +69,7 @@ const Gallery = ()=> {
         onSwiper={setThumbsSwiper}
         loop={true}
         spaceBetween={10}
-        slidesPerView={6}
+        slidesPerView={3}
         freeMode={true}
         watchSlidesProgress={true}
         modules={[FreeMode, Navigation, Thumbs]}
@@ -73,7 +77,7 @@ const Gallery = ()=> {
       >
         {images.map((src, index) => (
           
-        <SwiperSlide>
+        <SwiperSlide key={index+'-'+index}>
             <img
               key={index}
               src={src}
