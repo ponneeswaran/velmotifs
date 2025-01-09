@@ -13,13 +13,13 @@ const Footer = () => {
     <footer className="bg-dark text-white py-4">
         <Container>
             <Row>
-                <Col md={7}>
+                <Col md={7} xs={12}>
                     <Contact />
                 </Col>
-                <Col md={1}>
+                <Col md={1} className="d-none d-md-block">
                 <div style={verticalLineStyle}></div>
                 </Col>
-                <Col md={4}>
+                <Col md={4} xs={12}>
                 <div  style={{ padding: "20px", maxWidth: "600px", margin: "0 auto" }}>
                     <h2>Contact Us</h2>
                     <p>
