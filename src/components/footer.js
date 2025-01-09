@@ -10,7 +10,7 @@ const Footer = () => {
         };
 
   return (
-    <footer className="bg-dark text-white py-4 mt-5">
+    <footer className="bg-dark text-white py-4">
         <Container>
             <Row>
                 <Col md={7}>
@@ -23,7 +23,7 @@ const Footer = () => {
                 <div  style={{ padding: "20px", maxWidth: "600px", margin: "0 auto" }}>
                     <h2>Contact Us</h2>
                     <p>
-                        <b>Email:</b> info@example.com
+                        <b>Email:</b> velmotifs@gmail.com
                         <br />
                         <b>Phone:</b> +91-9944586485
                         <br />
@@ -35,7 +35,7 @@ const Footer = () => {
             <hr />
             <Row>
             <Col className="text-center">
-                <p>&copy; {new Date().getFullYear()} Your Company. All rights reserved.</p>
+                <p>&copy; {new Date().getFullYear()} Vel Motifs. All rights reserved.</p>
             </Col>
             </Row>
         </Container>

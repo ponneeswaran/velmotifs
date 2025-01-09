@@ -21,7 +21,7 @@ const Gallery = ()=> {
   // Dynamically generate a list of image paths from the public/images folder
   const importAllImages = () => {
     // Replace with the relative path of your folder
-    const imagesContext = require.context('../../public/images', false, /\.(png|jpe?g|svg)$/);
+    const imagesContext = require.context('../../public/galleryImages', false, /\.(png|jpe?g|svg)$/);
     return imagesContext.keys().map(imagesContext);
   };
 
@@ -65,7 +65,7 @@ const Gallery = ()=> {
         onSwiper={setThumbsSwiper}
         loop={true}
         spaceBetween={10}
-        slidesPerView={4}
+        slidesPerView={6}
         freeMode={true}
         watchSlidesProgress={true}
         modules={[FreeMode, Navigation, Thumbs]}

@@ -1,26 +1,11 @@
 import { Col, Container, Row } from "react-bootstrap";
 
 const About = () => (
-        <div id="about" className="section">
-            <h1>About Me</h1>
-            <Container>
+        <div id="about" className="section background-section">
+            <h1 style={{color: 'white'}}>About Me</h1>
+            <Container style={{ marginTop: "300px"}}>
               <Row className="align-items-center" style={{ minHeight: "60vh" }}>
-                <Col md={6}>
-                  <img
-                    src={"pics/DSC_0874.JPG"}
-                    alt="Krithika Arumugam"
-                    style={{
-                      width: "100%",
-                      height: "auto",
-                      maxWidth: "300px",
-                      maxHeight: "400px",
-                      objectFit: "cover",
-                      display: "block",
-                      margin: "0 auto", // Centers the image horizontally
-                    }}
-                  />
-                </Col>
-                <Col md={6}>
+                <Col md={{span:5, offset:7}}>
                   <p style={{ fontSize: "1.2rem", lineHeight: "1.6" }}>
                     Krithika Arumugam is an engineering graduate with a B-Tech in Computer Science and Engineering who has embraced her creative passions as a housewife. 
                     With a deep interest in tailoring, embroidery, and aari work, she blends technical skills with artistic flair. Krithika occasionally helps her mother teach tailoring classes, 
