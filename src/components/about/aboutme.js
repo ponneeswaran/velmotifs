@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 
+import './styles.css';
+
 const About = () => {
   const [color, setColor] = useState('black');
   const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 768);

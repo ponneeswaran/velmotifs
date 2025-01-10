@@ -41,20 +41,3 @@ body, html {
   height: 100%;
   margin: 0;
 }
-
-.container, .sticky-top {
-  overflow: visible; /* Ensure the parent containers allow the sticky element */
-}
-
-.text-right{
-  text-align: right;
-}
-
-.background-section {
-  width: 100%;
-  height: 100vh;
-  background-image: url(/public/pics/DSC_0583.jpg); /* Your image URL */
-  background-size: cover; /* Ensure the image covers the entire section */
-  background-position: center center; /* Centers the image */
-  background-repeat: no-repeat;
-}

@@ -1,0 +1,59 @@
+/* Reset body margin and padding */
+#home {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  /* Blurred background */
+  .background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('/public/pics/welcome.png') no-repeat center center/cover;
+    filter: blur(1px);
+    z-index: -1;
+  }
+  
+  /* Content styling */
+  .content {
+    z-index: 1;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white background */
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .content h1 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #333;
+  }
+  
+  .content p {
+    font-size: 1rem;
+    color: #0f0f0f;
+    margin-bottom: 20px;
+  }
+  
+  .content button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .content button:hover {
+    background-color: #0056b3;
+  }
+  

@@ -21,16 +21,15 @@ const Gallery = ()=> {
   // Dynamically generate a list of image paths from the public/images folder
   const importAllImages = () => {
     // Replace with the relative path of your folder
-    const imagesContext = require.context('../../public/galleryImages', false, /\.(png|jpe?g|svg)$/);
+    const imagesContext = require.context('../../../public/galleryImages', false, /\.(png|jpe?g|svg|JPG|JPEG)$/);
     // Get all image paths and sort by file name (assuming the file names are sortable alphabetically)
     const imagePaths = imagesContext.keys().sort();
-
+    
     // Map the sorted image paths to the actual images
     return imagePaths.map(image => imagesContext(image));
   };
 
   const images = importAllImages();
-
 
   return (
     <div id="gallery" className="section" style={{ flexWrap: "wrap", gap: "10px", padding: "20px" }}>
@@ -69,7 +68,7 @@ const Gallery = ()=> {
         onSwiper={setThumbsSwiper}
         loop={true}
         spaceBetween={10}
-        slidesPerView={3}
+        slidesPerView={7}
         freeMode={true}
         watchSlidesProgress={true}
         modules={[FreeMode, Navigation, Thumbs]}
