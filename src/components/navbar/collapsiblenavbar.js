@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Navbar, Nav, Container, Row, Col } from 'react-bootstrap';
 import {Link} from 'react-scroll';
 
 let activeSelection = null;
@@ -12,7 +12,6 @@ const menuSections = [
 
 const CollapsibleNavbar = () => { 
   const [isSticky, setIsSticky] = useState(false);
-  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 768);
   
   const handleScroll = () => {
     const sections = document.querySelectorAll(".section");
@@ -45,16 +44,11 @@ const CollapsibleNavbar = () => {
   };
 
   useEffect(() => {
-    setIsLargeScreen(window.innerWidth >= 768);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  if(isSticky || !isLargeScreen){
-    return (<MenuBarScroll isSticky = {isSticky}/>);
-  }else{
-    return (<MenuBarCenter isSticky = {isSticky}/>);
-  }
+  return (<MenuBarScroll isSticky = {isSticky}/>);
 };
 
 const MenuBarScroll = (props) => {
@@ -64,38 +58,26 @@ const MenuBarScroll = (props) => {
       variant="dark"
       expand="lg"
       className={`sticky-top ${props.isSticky ? 'shadow-sm' : ''}`}
-      style={{ position: props.isSticky ? 'fixed' : 'sticky', top: 0, width: '100%' }}
+      style={{ position: props.isSticky ? 'fixed' : 'sticky', top: 0, width: '100%', fontSize: '2rem' }}
     >
       <Container>
-        <Navbar.Brand href="#home">Vel Motifs</Navbar.Brand>
+        <Navbar.Brand href="#home" style={{fontSize: "2rem"}}>
+          <Row>
+            <Col>
+              <div style={{width: "75px", height: "75px",overflow: "hidden"}}>
+                <img src='/pics/logo.png' alt='logo' style={{width: "100%", height: "100%", objectFit: "cover"}}/>
+              </div>
+            </Col>
+            <Col className="d-flex align-items-center">
+              Vel Motifs
+            </Col>
+          </Row>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
             {menuSections.map((menuItem)=>{
               return <MenuList key={menuItem.id} label={menuItem.title} page={menuItem.page} offset={-50} val={menuItem.val}/>
-            })}
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
-  );
-};
-
-const MenuBarCenter = (props) => {
-  return (
-    <Navbar
-      bg={props.isSticky ? 'dark' : 'dark'}
-      variant="dark"
-      expand="lg" 
-      className={`sticky-top ${props.isSticky ? 'shadow-sm' : ''}`}
-      style={{ position: props.isSticky ? 'fixed' : 'sticky', top: 0, width: '100%' }}
-    >
-      <Container>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav" className='justify-content-center'>
-          <Nav className="w-50 d-flex justify-content-between">
-            {menuSections.map((menuItem)=>{
-              return <MenuList key={menuItem.id} label={menuItem.title} page={menuItem.page} offset={-110} val={menuItem.val}/>
             })}
           </Nav>
         </Navbar.Collapse>

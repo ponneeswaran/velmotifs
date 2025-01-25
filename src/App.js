@@ -1,10 +1,28 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Header,Footer,About,CollapsibleNavbar,Gallery, Home } from './components';
+import { Footer,About,CollapsibleNavbar,Gallery, Home, SplashPage } from './components';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useEffect } from 'react';
 
 
 const App = () => {
+
+  // useEffect(()=>{
+  //   const element = document.getElementById("1");
+  //   element.classList.add('active');
+  // },[]);
+
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<SplashPage />} />
+        <Route path="/home" element={<ReactApp />} />
+      </Routes>
+    </Router>
+  );
+}
+
+const ReactApp = () => {
   useEffect(()=>{
     const element = document.getElementById("1");
     element.classList.add('active');
@@ -12,7 +30,6 @@ const App = () => {
 
   return (
     <div className="App">
-      <Header/>
       <CollapsibleNavbar />
       <Home />
       <Gallery/>
@@ -20,6 +37,6 @@ const App = () => {
       <Footer />
     </div>
   );
-}
+};
 
 export default App;

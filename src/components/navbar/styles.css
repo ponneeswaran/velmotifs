@@ -1,7 +1,8 @@
 .container, .sticky-top {
-    overflow: visible; /* Ensure the parent containers allow the sticky element */
-  }
-  
-  .text-right{
-    text-align: right;
-  }
+  overflow: visible; /* Ensure the parent containers allow the sticky element */
+}
+
+.text-right{
+  text-align: right;
+}
+
