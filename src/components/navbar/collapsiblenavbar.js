@@ -54,11 +54,13 @@ const CollapsibleNavbar = () => {
 const MenuBarScroll = (props) => {
   return (
     <Navbar
-      bg={props.isSticky ? 'dark' : 'dark'}
-      variant="dark"
+      bg="transparent"
+      // variant="dark"
       expand="lg"
       className={`sticky-top ${props.isSticky ? 'shadow-sm' : ''}`}
-      style={{ position: props.isSticky ? 'fixed' : 'sticky', top: 0, width: '100%', fontSize: '2rem' }}
+      style={{ position: props.isSticky ? 'fixed' : 'sticky', top: 0, width: '100%', fontSize: '2rem', backgroundColor: "rgba(255, 255, 255, 0.5)", // Semi-transparent background
+        backdropFilter: "blur(1px)", // Apply blur effect
+        WebkitBackdropFilter: "blur(1px)" }}
     >
       <Container>
         <Navbar.Brand href="#home" style={{fontSize: "2rem"}}>

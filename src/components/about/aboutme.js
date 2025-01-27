@@ -5,19 +5,21 @@ import './styles.css';
 
 const About = () => {
   const [color, setColor] = useState('black');
-  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 768);
+  const [marginTop, setMarginTop] = useState('0px');
 
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      setIsLargeScreen(window.innerWidth >= 768);
 
       if (width <= 480) {
         setColor('yellow');
-      } else if (width <= 768) {
-        setColor('black');
+        setMarginTop('50px');
+      } else if (width <= 820) {
+        setColor('yellow');
+        setMarginTop('250px');
       } else {
         setColor('black');
+        setMarginTop('200px');
       }
     };
 
@@ -36,7 +38,7 @@ const About = () => {
   return (
         <div id="about" className="section background-section">
             <h1 style={{color: 'white', paddingTop:'25px'}}>About Me</h1>
-            <Container style={{ marginTop: isLargeScreen ? "300px" : "50px"}}>
+            <Container style={{ marginTop }}>
               <Row className="align-items-center" style={{ minHeight: "60vh" }}>
                 <Col md={{span:5, offset:7}}>
                   <p style={{ fontSize: "1.2rem", lineHeight: "1.6", color }}>
