@@ -21,7 +21,7 @@ const Gallery = ()=> {
   // Dynamically generate a list of image paths from the public/images folder
   const importAllImages = () => {
     // Replace with the relative path of your folder
-    const imagesContext = require.context('../../../public/galleryImages', false, /\.(png|jpe?g|svg|JPG|JPEG)$/);
+    const imagesContext = require.context('../../../public/galleryImages', false, /\.(png|jpe?g|svg|JPG|JPEG|webp)$/);
     // Get all image paths and sort by file name (assuming the file names are sortable alphabetically)
     const imagePaths = imagesContext.keys().sort();
     
