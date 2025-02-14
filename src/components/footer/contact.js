@@ -31,9 +31,12 @@ const Contact = () => {
         <Container>
           <Row style={{ marginBottom: "10px" }}>
             <Col md={6}>
-              <label htmlFor="name" style={{ display: "block", marginBottom: "5px" }}>
-              Name
-            </label>
+              <label
+                htmlFor="name"
+                style={{ display: "block", marginBottom: "5px" }}
+              >
+                Name
+              </label>
             </Col>
             <Col md={6}>
               <input
@@ -52,10 +55,13 @@ const Contact = () => {
               />
             </Col>
           </Row>
-          
+
           <Row style={{ marginBottom: "10px" }}>
             <Col md={6}>
-              <label htmlFor="email" style={{ display: "block", marginBottom: "5px" }}>
+              <label
+                htmlFor="email"
+                style={{ display: "block", marginBottom: "5px" }}
+              >
                 Email
               </label>
             </Col>
@@ -78,7 +84,10 @@ const Contact = () => {
           </Row>
           <Row style={{ marginBottom: "10px" }}>
             <Col md={6}>
-              <label htmlFor="message" style={{ display: "block", marginBottom: "5px" }}>
+              <label
+                htmlFor="message"
+                style={{ display: "block", marginBottom: "5px" }}
+              >
                 Message
               </label>
             </Col>
@@ -100,7 +109,7 @@ const Contact = () => {
             </Col>
           </Row>
           <Row>
-            <Col md={{span:6, offset:6}} >
+            <Col md={{ span: 6, offset: 6 }}>
               <button
                 type="submit"
                 style={{
