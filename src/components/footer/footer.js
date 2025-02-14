@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import Contact from './contact';
+import packageInfo from '../../../package.json';
 
 const Footer = () => {
     const verticalLineStyle = {
@@ -35,7 +36,7 @@ const Footer = () => {
             <hr />
             <Row>
             <Col className="text-center">
-                <p>&copy; {new Date().getFullYear()} Vel Motifs. All rights reserved.</p>
+                <p>&copy; {new Date().getFullYear()} Vel Motifs. {packageInfo.version} All rights reserved.</p>
             </Col>
             </Row>
         </Container>
