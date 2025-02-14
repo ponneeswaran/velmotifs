@@ -9,86 +9,124 @@ import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 import 'swiper/css/autoplay';
 import 'swiper/css/pagination';
- 
+
 import './styles.css';
 
 // import required modules
 import { FreeMode, Navigation, Thumbs, Autoplay, Pagination } from 'swiper/modules';
+import GalleryCard from '../utils/card';
+import { Col, Row, Container, Modal, Button } from 'react-bootstrap';
 
-const Gallery = ()=> {
+const Gallery = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   // Dynamically generate a list of image paths from the public/images folder
   const importAllImages = () => {
-    // Replace with the relative path of your folder
     const imagesContext = require.context('../../../public/galleryImages', false, /\.(png|jpe?g|svg|JPG|JPEG|webp)$/);
-    // Get all image paths and sort by file name (assuming the file names are sortable alphabetically)
     const imagePaths = imagesContext.keys().sort();
-    
-    // Map the sorted image paths to the actual images
     return imagePaths.map(image => imagesContext(image));
   };
 
   const images = importAllImages();
+  console.log(images);
 
   return (
-    <div id="gallery" className="section" style={{ flexWrap: "wrap", gap: "10px", padding: "20px" }}>
-      <h1>Gallery</h1>
-      <Swiper
-        style={{
-          '--swiper-navigation-color': '#000',
-          '--swiper-pagination-color': '#000',
-        }}
-        pagination={{
-          type: 'fraction',
-        }}
-        loop={true}
-        spaceBetween={10}
-        navigation={true}
-        thumbs={{ swiper: thumbsSwiper }}
-        modules={[FreeMode, Navigation, Thumbs, Autoplay, Pagination ]}
-        autoplay={{
-          delay:5000,
-          disableOnInteraction: false,
-        }}
+    <div
+      id="gallery"
+      className="section"
+      style={{ flexWrap: 'wrap', gap: '10px', padding: '20px' }}
+    >
+      <h1 className="text-center">Gallery</h1>
+      <Container>
+        <Row className="justify-content-center align-items-center" style={{ minHeight: '60vh' }}>
+          <Col lg={6} md={6} sm={12} className="d-flex justify-content-center">
+            <GalleryCard onClick={openModal} />
+          </Col>
+          <Col lg={6} md={6} sm={12} className="d-flex justify-content-center">
+            <GalleryCard onClick={openModal} />
+          </Col>
+        </Row>
+      </Container>
+
+      {/* Modal with Swiper Gallery */}
+      <Modal
+        show={isModalOpen}
+        onHide={closeModal}
+        size="lg"
+        centered
+        dialogClassName="modal-dialog-scrollable modal-dialog-fullscreen-sm-down"
+        backdrop="true"
       >
-        {images.map((src, index) => (
-        <SwiperSlide key={index+'-'+index}>
-            <img
-              key={index}
-              src={src}
-              alt={`Gallery ${index + 1}`}
-              style={{ objectFit: "scale-down", borderRadius: "8px" }}
-            />
-            
-        </SwiperSlide>
-          ))}
-      </Swiper>
-      <Swiper
-        onSwiper={setThumbsSwiper}
-        loop={true}
-        spaceBetween={10}
-        slidesPerView={7}
-        freeMode={true}
-        watchSlidesProgress={true}
-        modules={[FreeMode, Navigation, Thumbs]}
-        className="mySwiper"
-      >
-        {images.map((src, index) => (
-          
-        <SwiperSlide key={index+'-'+index}>
-            <img
-              key={index}
-              src={src}
-              alt={`Gallery ${index + 1}`}
-              style={{ objectFit: "scale-down", borderRadius: "8px" }}
-            />
-            
-        </SwiperSlide>
-          ))}
-      </Swiper>
+        <Modal.Header closeButton>
+          <Modal.Title>Image Gallery</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {/* Main Swiper for the Image Gallery */}
+          <Swiper
+            style={{
+              '--swiper-navigation-color': '#000',
+              '--swiper-pagination-color': '#000',
+            }}
+            pagination={{
+              type: 'fraction',
+            }}
+            loop={true}
+            spaceBetween={10}
+            navigation={true}
+            thumbs={{ swiper: thumbsSwiper && thumbsSwiper.swiper }}
+            modules={[FreeMode, Navigation, Thumbs, Autoplay, Pagination]}
+            autoplay={{
+              delay: 5000,
+              disableOnInteraction: false,
+            }}
+          >
+            {images.map((src, index) => (
+              <SwiperSlide key={index + '-' + index}>
+                <img
+                  key={index}
+                  src={src}
+                  alt={`Gallery ${index + 1}`}
+                  style={{ objectFit: 'scale-down', borderRadius: '8px' }}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
+          {/* Thumbnail Swiper for Image Navigation */}
+          <Swiper
+            onSwiper={setThumbsSwiper}
+            loop={true}
+            spaceBetween={10}
+            slidesPerView={7}
+            freeMode={true}
+            watchSlidesProgress={true}
+            modules={[FreeMode, Navigation, Thumbs]}
+            className="mySwiper"
+          >
+            {images.map((src, index) => (
+              <SwiperSlide key={index + '-' + index}>
+                <img
+                  key={index}
+                  src={src}
+                  alt={`Gallery ${index + 1}`}
+                  style={{ objectFit: 'scale-down', borderRadius: '8px' }}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={closeModal}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
-}
+};
 
 export default Gallery;
