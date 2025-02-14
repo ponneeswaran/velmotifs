@@ -1,19 +1,15 @@
-import { Button, Card } from 'react-bootstrap';
+import { Card } from "react-bootstrap";
 
-const GalleryCard = ({ onClick }) => {
+const GalleryCard = ({ title, content, onClick }) => {
   return (
-    <Card style={{ width: '18rem' }} onClick={onClick}>
+    <Card className="mt-3" style={{ width: "50rem" }} onClick={onClick}>
       <Card.Img variant="top" src="holder.js/100px180" />
       <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
+        <Card.Title>{title}</Card.Title>
+        <Card.Text>{content}</Card.Text>
       </Card.Body>
     </Card>
   );
-}
+};
 
 export default GalleryCard;

@@ -1,21 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 // Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/free-mode';
-import 'swiper/css/navigation';
-import 'swiper/css/thumbs';
-import 'swiper/css/autoplay';
-import 'swiper/css/pagination';
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
+import "swiper/css/autoplay";
+import "swiper/css/pagination";
 
-import './styles.css';
+import "./styles.css";
 
 // import required modules
-import { FreeMode, Navigation, Thumbs, Autoplay, Pagination } from 'swiper/modules';
-import GalleryCard from '../utils/card';
-import { Col, Row, Container, Modal, Button } from 'react-bootstrap';
+import {
+  FreeMode,
+  Navigation,
+  Thumbs,
+  Autoplay,
+  Pagination,
+} from "swiper/modules";
+import GalleryCard from "../utils/card";
+import { Col, Row, Container, Modal, Button } from "react-bootstrap";
 
 const Gallery = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -26,9 +32,13 @@ const Gallery = () => {
 
   // Dynamically generate a list of image paths from the public/images folder
   const importAllImages = () => {
-    const imagesContext = require.context('../../../public/galleryImages', false, /\.(png|jpe?g|svg|JPG|JPEG|webp)$/);
+    const imagesContext = require.context(
+      "../../../public/galleryImages",
+      false,
+      /\.(png|jpe?g|svg|JPG|JPEG|webp)$/
+    );
     const imagePaths = imagesContext.keys().sort();
-    return imagePaths.map(image => imagesContext(image));
+    return imagePaths.map((image) => imagesContext(image));
   };
 
   const images = importAllImages();
@@ -38,16 +48,27 @@ const Gallery = () => {
     <div
       id="gallery"
       className="section"
-      style={{ flexWrap: 'wrap', gap: '10px', padding: '20px' }}
+      style={{ flexWrap: "wrap", gap: "10px", padding: "20px" }}
     >
       <h1 className="text-center">Gallery</h1>
       <Container>
-        <Row className="justify-content-center align-items-center" style={{ minHeight: '60vh' }}>
+        <Row
+          className="justify-content-center align-items-center"
+          style={{ minHeight: "60vh" }}
+        >
           <Col lg={6} md={6} sm={12} className="d-flex justify-content-center">
-            <GalleryCard onClick={openModal} />
+            <GalleryCard
+              title="Tutorials"
+              content="Different types of stitches and aari works."
+              onClick={openModal}
+            />
           </Col>
           <Col lg={6} md={6} sm={12} className="d-flex justify-content-center">
-            <GalleryCard onClick={openModal} />
+            <GalleryCard
+              title="My Works"
+              content="My works over the time."
+              onClick={openModal}
+            />
           </Col>
         </Row>
       </Container>
@@ -68,11 +89,11 @@ const Gallery = () => {
           {/* Main Swiper for the Image Gallery */}
           <Swiper
             style={{
-              '--swiper-navigation-color': '#000',
-              '--swiper-pagination-color': '#000',
+              "--swiper-navigation-color": "#000",
+              "--swiper-pagination-color": "#000",
             }}
             pagination={{
-              type: 'fraction',
+              type: "fraction",
             }}
             loop={true}
             spaceBetween={10}
@@ -85,12 +106,12 @@ const Gallery = () => {
             }}
           >
             {images.map((src, index) => (
-              <SwiperSlide key={index + '-' + index}>
+              <SwiperSlide key={index + "-" + index}>
                 <img
                   key={index}
                   src={src}
                   alt={`Gallery ${index + 1}`}
-                  style={{ objectFit: 'scale-down', borderRadius: '8px' }}
+                  style={{ objectFit: "scale-down", borderRadius: "8px" }}
                 />
               </SwiperSlide>
             ))}
@@ -108,12 +129,12 @@ const Gallery = () => {
             className="mySwiper"
           >
             {images.map((src, index) => (
-              <SwiperSlide key={index + '-' + index}>
+              <SwiperSlide key={index + "-" + index}>
                 <img
                   key={index}
                   src={src}
                   alt={`Gallery ${index + 1}`}
-                  style={{ objectFit: 'scale-down', borderRadius: '8px' }}
+                  style={{ objectFit: "scale-down", borderRadius: "8px" }}
                 />
               </SwiperSlide>
             ))}
