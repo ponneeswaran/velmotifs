@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 // Import Swiper styles
 import "swiper/css";
@@ -107,11 +108,17 @@ const Gallery = () => {
           >
             {images.map((src, index) => (
               <SwiperSlide key={index + "-" + index}>
-                <img
+                <LazyLoadImage
                   key={index}
                   src={src}
                   alt={`Gallery ${index + 1}`}
-                  style={{ objectFit: "scale-down", borderRadius: "8px" }}
+                  effect="blur"
+                  style={{
+                    objectFit: "scale-down",
+                    borderRadius: "8px",
+                    width: "100%",
+                    height: "auto",
+                  }}
                 />
               </SwiperSlide>
             ))}
@@ -136,6 +143,13 @@ const Gallery = () => {
                   alt={`Gallery ${index + 1}`}
                   style={{ objectFit: "scale-down", borderRadius: "8px" }}
                 />
+                {/* <LazyLoadImage
+                  key={index}
+                  src={src}
+                  alt={`Gallery ${index + 1}`}
+                  effect="blur"
+                  style={{ objectFit: "scale-down", borderRadius: "8px", width: "100%", height: "auto" }}
+                /> */}
               </SwiperSlide>
             ))}
           </Swiper>
