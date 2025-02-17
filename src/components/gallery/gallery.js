@@ -27,8 +27,12 @@ import { Col, Row, Container, Modal, Button } from "react-bootstrap";
 const Gallery = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalTitle, setModalTitle] = useState("");
 
-  const openModal = () => setIsModalOpen(true);
+  const openModal = (title) => {
+    setModalTitle(title); // Set modal title
+    setIsModalOpen(true);
+  };
   const closeModal = () => setIsModalOpen(false);
 
   // Dynamically generate a list of image paths from the public/images folder
@@ -43,13 +47,17 @@ const Gallery = () => {
   };
 
   const images = importAllImages();
-  console.log(images);
 
   return (
     <div
       id="gallery"
       className="section"
-      style={{ flexWrap: "wrap", gap: "10px", padding: "20px" }}
+      style={{
+        flexWrap: "wrap",
+        gap: "10px",
+        padding: "20px",
+        height: "100vh",
+      }}
     >
       <h1 className="text-center">Gallery</h1>
       <Container>
@@ -61,14 +69,14 @@ const Gallery = () => {
             <GalleryCard
               title="Tutorials"
               content="Different types of stitches and aari works."
-              onClick={openModal}
+              onClick={() => openModal("Tutorials")}
             />
           </Col>
           <Col lg={6} md={6} sm={12} className="d-flex justify-content-center">
             <GalleryCard
               title="My Works"
               content="My works over the time."
-              onClick={openModal}
+              onClick={() => openModal("My Works")}
             />
           </Col>
         </Row>
@@ -84,7 +92,7 @@ const Gallery = () => {
         backdrop="true"
       >
         <Modal.Header closeButton>
-          <Modal.Title>Image Gallery</Modal.Title>
+          <Modal.Title>{modalTitle}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {/* Main Swiper for the Image Gallery */}
@@ -163,5 +171,6 @@ const Gallery = () => {
     </div>
   );
 };
+
 
 export default Gallery;
