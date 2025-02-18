@@ -145,19 +145,18 @@ const Gallery = () => {
           >
             {images.map((src, index) => (
               <SwiperSlide key={index + "-" + index}>
-                <img
-                  key={index}
-                  src={src}
-                  alt={`Gallery ${index + 1}`}
-                  style={{ objectFit: "scale-down", borderRadius: "8px" }}
-                />
-                {/* <LazyLoadImage
+                <LazyLoadImage
                   key={index}
                   src={src}
                   alt={`Gallery ${index + 1}`}
                   effect="blur"
-                  style={{ objectFit: "scale-down", borderRadius: "8px", width: "100%", height: "auto" }}
-                /> */}
+                  style={{
+                    objectFit: "scale-down",
+                    borderRadius: "8px",
+                    width: "100%",
+                    height: "auto",
+                  }}
+                />
               </SwiperSlide>
             ))}
           </Swiper>
